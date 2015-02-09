@@ -1,0 +1,9 @@
+{
+  "generator-reveal": {
+    "presentationTitle": "A better CSS : Sass & LESS",
+    "packageVersion": "0.1.0",
+    "revealTheme": "beige",
+    "useSass": false,
+    "deployToGithubPages": false
+  }
+}
