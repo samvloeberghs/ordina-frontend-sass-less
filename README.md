@@ -1,4 +1,4 @@
-# Frontend CC - A better CSS : Sass &amp; Less - Ordina
+# A better CSS : Sass &amp; Less - Ordina
 
 ## Collaborators:
 
