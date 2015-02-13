@@ -14,9 +14,9 @@ in a commandline:
 
     git --version && npm -v && node -v
 
-## Contents:
+## Contents
 
-### LESS:
+### LESS
 
 contains the code of the LESS example(s)
 
