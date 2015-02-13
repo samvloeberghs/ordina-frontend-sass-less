@@ -1,6 +1,6 @@
 # A better CSS : Sass &amp; LESS - Ordina
 
-## Collaborators:
+## Collaborators
 
 * Jan De Wilde
 * Frédérick Ghijselinck
@@ -9,17 +9,23 @@
 
 ## Contents:
 
-* LESS: contains the code of the LESS example(s)
+### LESS:
+
+contains the code of the LESS example(s)
 
     npm install
     bower install
 
-* Sass: contains the code of the Sass example(s)
+### Sass
+
+contains the code of the Sass example(s)
 
     npm install
     bower install
 
-* presentation: contains the Reveal.js presentation
+### presentation
+
+contains the Reveal.js presentation
 
     npm install
     bower install
