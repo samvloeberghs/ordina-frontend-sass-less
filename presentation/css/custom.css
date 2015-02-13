@@ -1,0 +1,43 @@
+#ordina{
+
+}
+
+#ordina a img{
+    border:none;
+}
+#ordina img{
+    border:none;
+}
+
+#ordina h1{
+    font-size:1.6em;
+}
+
+#ordina h2{
+    font-size:1.4em;
+    background: url('../img/ordina.png') no-repeat top right;
+    border-bottom:1px solid #555;
+    padding-bottom:10px;
+    text-align:left;
+    margin-bottom:30px;
+}
+
+#ordina ul,
+#ordina ol{
+    display:block;
+    margin-left:50px;
+}
+
+#ordina ul li,
+#ordina ol li{
+    margin-bottom:10px;
+    font-size:0.9em;
+}
+
+#ordina p{
+    font-size:0.9em;
+}
+
+#ordina #start img{
+    margin-bottom:20px;
+}
