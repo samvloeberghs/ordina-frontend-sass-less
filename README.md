@@ -2,10 +2,10 @@
 
 ## Collaborators
 
-* Jan De Wilde
-* Frédérick Ghijselinck
-* Dennis Jaamann
-* Sam Vloeberghs
+* Jan De Wilde - jan.dewilde@ordina.be - @MrJean
+* Frédéric Ghijselinck - frederick.ghijselinck@ordina.be
+* Dennis Jaamann - dennis.jaamann@ordina.be
+* Sam Vloeberghs - sam.vloeberghs@ordina.be - @samvloeberghs
 
 ## prerequisites
 
