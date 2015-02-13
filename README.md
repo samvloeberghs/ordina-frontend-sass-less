@@ -7,7 +7,7 @@
 * Dennis Jaamann - dennis.jaamann@ordina.be
 * Sam Vloeberghs - sam.vloeberghs@ordina.be - @samvloeberghs
 
-## prerequisites
+## Prerequisites
 
 Please make sure you have a working copy of Git, NodeJS & npm installed. You can check this by running these commands
 in a commandline:
