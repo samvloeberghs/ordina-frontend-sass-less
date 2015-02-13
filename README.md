@@ -12,9 +12,7 @@
 Please make sure you have a working copy of Git, NodeJS & npm installed. You can check this by running these commands
 in a commandline:
 
-    git -v
-    npm -v
-    node -v
+    git --version && npm -v && node -v
 
 ## Contents:
 
