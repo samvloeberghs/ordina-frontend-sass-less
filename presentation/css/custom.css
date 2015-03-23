@@ -41,3 +41,29 @@
 #ordina #start img{
     margin-bottom:20px;
 }
+
+#ordina .emphasize{
+    padding:70px 0 0 0;
+}
+
+#ordina .emphasize h3,
+#ordina .emphasize p{
+    font-style:italic;
+}
+#ordina .emphasize img{
+    background:none;
+    box-shadow:none;
+    width:60%;
+    display:block;
+    margin:75px auto;
+}
+
+#ordina pre{
+    background:none;
+    box-shadow:none;
+}
+#ordina code{
+    padding:15px;
+    font-size:1.2em;
+}
+

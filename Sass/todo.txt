@@ -1,1 +1,8 @@
-yeoman scaffold app
+vergelijking libsass / compass
+css extensions
+commenting
+variabelen & interpolatie
+(color) operations
+default vars
+imports & partials
+@media & @extendss
