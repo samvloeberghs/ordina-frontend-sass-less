@@ -30,9 +30,23 @@ contains the code of the Sass example(s)
     npm install
     bower install
 
+run the Sass example using
+
+    grunt
+
+publish it in to distributable
+
+    grunt publish
+
 ### presentation
 
 contains the Reveal.js presentation
 
     npm install
     bower install
+
+run the presentation using
+
+    grunt serve
+
+
