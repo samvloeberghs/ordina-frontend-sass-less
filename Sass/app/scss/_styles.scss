@@ -1,0 +1,156 @@
+.wrapper{
+  margin: 20px;
+}
+
+/**
+EXAMPLES
+-----------
+**/
+
+#examples {
+
+  padding: 40px;
+  font-family: sans-serif;
+
+  /*
+  VARIABLES
+  */
+
+  $success-color:   #43AC6A;
+  $warning-color:   #f08a24;
+  $linkcolor: $warning-color;
+  $otherlinkcolor: $success-color;
+
+  /*
+  NESTED RULES
+  */
+
+  h1{
+    margin:20px 0;
+    text:{
+      transform: uppercase;
+    }
+    font: {
+      size: 1.4em;
+      weight: bold;
+    }
+  }
+  h2{
+    margin-bottom:15px;
+    font: {
+      size: 1.2em;
+      weight: bold;
+    }
+  }
+
+  .box {
+    background: #008B8B;
+    padding: 20px;
+    margin-bottom:10px;
+    .boxinbox {
+      background: #fff;
+      padding:20px;
+      text-align:center;
+    }
+  }
+
+  /*
+  REFERENCING PARENTS
+  */
+
+  a{
+    color:$linkcolor;
+    text-decoration:none;
+    &:hover{
+      border-bottom: 1px solid $linkcolor;
+    }
+  }
+
+  /*
+  FUNCTIONS & KEYWORD ARGUMENTS
+  */
+
+  $p_color: $primary-color;
+  p{
+    content: 'This is a paragraph';
+    color: $p_color;
+    padding:10px;
+    border: 2px solid $p_color;
+    &.darker{
+      $d_color: darken($color: $p_color, $amount: 10%);
+      color: $d_color;
+      border-color: $d_color;
+    }
+    &.lighter{
+      $l_color: lighten($amount: 30%, $color: $p_color);
+      color: $l_color;
+      border-color: $l_color;
+    }
+  }
+
+  /*
+  INTERPOLATION
+  */
+
+  $name: fancy;
+  $attr: font;
+
+  p.#{$name} {
+    #{$attr}-color: blue;
+  }
+
+  /*
+  VARIABLE DEFAULTS
+  */
+
+  $content: "First content";
+  $content: "Second content?" !default;
+  $bis_content: "First bis content" !default;
+
+  p {
+    margin-bottom:10px;
+    &.primary:before {
+      content: $content;
+    }
+
+    &.secundary:before {
+      content: $bis_content;
+    }
+  }
+
+  /*
+  CONTROL DIRECTIVES, LOGIC & EXPRESSIONS
+  */
+
+  .boxbasics{
+    padding: 10px 10px 10px 32px;
+    margin-bottom: 15px;
+    border:none;
+    text-transform:uppercase;
+    font-size:14px;
+    line-height:14px;
+  }
+
+  @each $type, $color in
+        (info, $info-color),
+        (success,$success-color),
+        (error, $error-color),
+        (warning, $warning-color) {
+
+    .box-#{$type} {
+      @extend .boxbasics;
+      $bordercolor: darken($color, 10%);
+      @if($type == 'info') {
+        $bgcolor: $color;
+      }
+      @else{
+        $bgcolor: lighten($color, 30%);
+      }
+      color: $bordercolor;
+      @include background($imgpath: "../images/icons/#{$type}.png", $color: $bgcolor, $position: 8px 50%);
+      @include border($size:2px, $color: $bordercolor, $bottom:true, $top:true);
+    }
+
+  }
+
+}

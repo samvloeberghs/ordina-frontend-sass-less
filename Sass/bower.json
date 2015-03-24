@@ -1,0 +1,6 @@
+{
+  "name": "sass_example",
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}
