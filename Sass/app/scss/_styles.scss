@@ -139,6 +139,7 @@ EXAMPLES
 
     .box-#{$type} {
       @extend .boxbasics;
+      // COULD BE AVOIDED: MORE CODE GENERATION
       $bordercolor: darken($color, 10%);
       @if($type == 'info') {
         $bgcolor: $color;
