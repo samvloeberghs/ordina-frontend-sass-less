@@ -670,9 +670,124 @@ color: mix(@color, #246);
 }
                     </code>
                 </pre>
-                <aside>
-                    compiled CSS => take the body of the mixin and inject it into the css class where used
+                <aside class="notes">
+compiled CSS => take the body of the mixin and inject it into the css class where used
                 </aside>
+            </section>
+            <section>
+                <h2>Mixins - defaults</h2>
+                <pre>
+                    <code data-trim class="css">
+// Default Values
+.rounded-corners-all(@size: 5px)
+{
+  border-radius: @size;
+  -webkit-border-radius: @size;
+  -moz-border-radius: @size;
+}
+
+#form
+{
+  .rounded-corners-all;
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Mixins - overloads</h2>
+                <pre>
+                    <code data-trim class="css">
+// Using overloads
+.color(@color)
+{
+  color: @color;
+}
+
+.color(@color, @factor)
+{
+  color: lighten(@color, @factor);
+}
+
+#form
+{
+  .color(#888, 20%); // Uses 2nd overload
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Mixins - guards</h2>
+                <pre>
+                    <code data-trim class="css">
+// Using guards
+.color(@color) when (alpha(@color) >= 50%)
+{
+  color: Black;
+}
+
+.color(@color) when (alpha(@color) < 50%)
+{
+  color: transparent;
+}
+
+#form
+{
+  .color(@mainColor); // Uses 1st overload
+}
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Nested Rules</h2>
+                <ul>
+                    <li>Allows you to structure rules in a logical way</li>
+                    <li>Hierarchies imply the cascading/specificity</li>
+                    <li>LESS then deconstructs it into CSS for you</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Nested Rules</h2>
+                <pre>
+                    <code data-trim class="css">
+// LESS Nested Rules
+nav {
+  font-size: 14px;
+  font-weight: bold;
+  float: right;
+  ul {
+    // Makes “nav ul {...}”
+    list-style-type: none;
+    li {
+      // Makes “nav ul li {...}”
+      float: left;
+      margin: 2px;
+    }
+  }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Nested Rules</h2>
+                <pre>
+                    <code data-trim class="css">
+// Use Combinator (&) to mix with parent:
+a
+{
+  text-decoration: none;
+  &:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+// Results in
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+                    </code>
+                </pre>
             </section>
         </section>
         <section>
@@ -681,6 +796,7 @@ color: mix(@color, #246);
                 <li><a href="http://sass-lang.com/">Sass Lang website</a></li>
                 <li><a href="http://sass-compatibility.github.io/">Sass Compatibility</a></li>
                 <li><a href="http://foundation.zurb.com/">Zurb Foundation</a></li>
+                <li><a href="http://lesscss.org/">Official LESS website</a></li>
                 <li><a href="https://css-tricks.com/sass-vs-less/">Sass vs LESS</a></li>
             </ul>
         </section>
