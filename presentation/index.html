@@ -95,6 +95,7 @@
                 </p>
             </div>
         </section>
+
         <section>
             <h2>II) Introducing Sass</h2>
             <ul>
@@ -108,7 +109,7 @@
                 <strong>Examples explained using a Sass variant, Scss</strong>
             </p>
 
-            <aside>
+            <aside class="notes">
 
             </aside>
 
@@ -125,7 +126,7 @@
                 <strong>Examples explained using a Sass variant, Scss</strong>
             </p>
 
-            <aside>
+            <aside class="notes">
                 Compass relies on Ruby, Libsass does not ( relies on C )
                 Compass takes minutes to compile, Libsass seconds
                 Not every function of Sass is available in either compiler
@@ -140,13 +141,13 @@
                     <li>Variables</li>
                     <li>Nested rules & properties</li>
                     <li>Referencing parents</li>
-                    <li>Functions</li>
+                    <li>Functions &amp; keyword arguments</li>
                     <li>Interpolation</li>
                     <li>Variable defaults</li>
                     <li>...</li>
                 </ul>
 
-                <aside>
+                <aside class="notes">
 
                 </aside>
 
@@ -156,17 +157,14 @@
 
                 <pre>
                     <code data-trim class="css">
-                        #ordina p{
-                        font-size:0.9em;
-                        }
-
-                        #ordina #start img{
-                        margin-bottom:20px;
-                        }
+$success-color:   #43AC6A;
+$warning-color:   #f08a24;
+$linkcolor: $warning-color;
+$otherlinkcolor: $success-color;
                     </code>
                 </pre>
 
-                <aside>
+                <aside class="notes">
 
                 </aside>
 
@@ -175,10 +173,23 @@
                 <h2>Sass: Nested rules & properties</h2>
                 <pre>
                     <code data-trim class="css">
-
+h1{
+    margin-bottom:15px;
+    font: {
+        size: 1.4em;
+        weight: bold;
+    }
+}
+h2{
+    margin-bottom:15px;
+    font: {
+        size: 1.2em;
+        weight: bold;
+    }
+}
                     </code>
                 </pre>
-                <aside>
+                <aside class="notes">
                     Sass allows CSS rules to be nested within one another.
                     The inner rule then only applies within the outer rule’s selector.
 
@@ -192,24 +203,51 @@
                 <h2>Sass: Referencing parents</h2>
                 <pre>
                     <code data-trim class="css">
-
+a{
+    color:$linkcolor;
+    text-decoration:none;
+    &:hover{
+        border-bottom: 1px solid $linkcolor;
+    }
+}
                     </code>
                 </pre>
 
-                <aside>
+                <aside class="notes">
 
                 </aside>
 
             </section>
             <section>
-                <h2>Sass: Functions</h2>
+                <h2>Sass: Functions & keyword arguments</h2>
                 <pre>
                     <code data-trim class="css">
-
+$p_color: $primary-color;
+p{
+    content: 'This is a paragraph';
+    color: $p_color;
+    padding:10px;
+    border: 2px solid $p_color;
+    &.darker{
+        $d_color: darken($color: $p_color, $amount: 10%);
+        color: $d_color;
+        border-color: $d_color;
+    }
+    &.lighter{
+        $l_color: lighten($amount: 30%, $color: $p_color);
+        color: $l_color;
+        border-color: $l_color;
+    }
+}
                     </code>
                 </pre>
 
-                <aside>
+                <aside class="notes">
+
+                    Sass functions can also be called using explicit keyword arguments.
+
+                    While this is less concise, it can make the stylesheet easier to read. It also allows functions to present more flexible interfaces, providing many arguments without becoming difficult to call.
+                    Named arguments can be passed in any order, and arguments with default values can be omitted. Since the named arguments are variable names, underscores and dashes can be used interchangeably.
 
                 </aside>
 
@@ -218,12 +256,19 @@
                 <h2>Sass: Interpolation</h2>
                 <pre>
                     <code data-trim class="css">
+$name: fancy;
+$attr: font;
 
+p.#{$name} {
+    #{$attr}-color: blue;
+}
                     </code>
                 </pre>
 
-                <aside>
-
+                <aside class="notes">
+                    You can also use SassScript variables in selectors and property names using #{} interpolation syntax:
+                    It’s also possible to use #{} to put SassScript into property values. In most cases this isn’t any better than using a variable,
+                    but using #{} does mean that any operations near it will be treated as plain CSS.
                 </aside>
 
             </section>
@@ -231,9 +276,27 @@
                 <h2>Sass: Variable defaults</h2>
                 <pre>
                     <code data-trim class="css">
+$content: "First content";
+$content: "Second content?" !default;
+$bis_content: "First bis content" !default;
 
+p {
+    margin-bottom:10px;
+    &.primary:before {
+        content: $content;
+    }
+
+    &.secundary:before {
+        content: $bis_content;
+    }
+}
                     </code>
                 </pre>
+                <aside class="notes">
+                    You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value.
+                    This means that if the variable has already been assigned to,
+                    it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.
+                </aside>
             </section>
         </section>
         <section>
