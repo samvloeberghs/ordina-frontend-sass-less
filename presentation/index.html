@@ -50,7 +50,7 @@
             <h1>A better CSS : Sass &amp; LESS</h1>
 
             <p>
-                Door Frédérick Ghijselinck & Sam Vloeberghs
+                By Frédérick Ghijselinck & Sam Vloeberghs
                 <br/>
                 & Competence Center Front-end &amp; UX
             </p>
@@ -66,7 +66,7 @@
                 <li>What's wrong with CSS?</li>
                 <li>Introducing Sass</li>
                 <li>Introducing LESS</li>
-                <li>Korte voorbeelden & hands-on</li>
+                <li>Short examples & hands-on</li>
             </ol>
 
         </section>
@@ -85,14 +85,14 @@
 
         <section>
             <div class="emphasize">
+
                 <h3>SASS ; CSS with superpowers</h3>
-
                 <img src="http://sass-lang.com/assets/img/illustrations/glasses-2087d741.svg" alt="Sass"/>
-
                 <p>
                     Sass is the most mature, stable, and powerful professional grade CSS extension language
                     in the world.
                 </p>
+
             </div>
         </section>
 
@@ -127,10 +127,12 @@
             </p>
 
             <aside class="notes">
-                Compass relies on Ruby, Libsass does not ( relies on C )
-                Compass takes minutes to compile, Libsass seconds
-                Not every function of Sass is available in either compiler
-                Both are available as Grunt / Gulp plugins
+                <ul>
+                    <li>Compass relies on Ruby, Libsass does not ( relies on C )</li>
+                    <li>Compass takes minutes to compile, Libsass seconds</li>
+                    <li>Not every function of Sass is available in either compiler</li>
+                    <li>Both are available as Grunt / Gulp pluginsw</li>
+                </ul>
             </aside>
 
         </section>
@@ -140,16 +142,12 @@
                 <ul>
                     <li>Variables</li>
                     <li>Nested rules & properties</li>
-                    <li>Referencing parents</li>
-                    <li>Functions &amp; keyword arguments</li>
+                    <li>Referencing parent selectors</li>
+                    <li>Functions</li>
                     <li>Interpolation</li>
                     <li>Variable defaults</li>
                     <li>...</li>
                 </ul>
-
-                <aside class="notes">
-
-                </aside>
 
             </section>
             <section>
@@ -157,15 +155,20 @@
 
                 <pre>
                     <code data-trim class="css">
-$success-color:   #43AC6A;
-$warning-color:   #f08a24;
-$linkcolor: $warning-color;
-$otherlinkcolor: $success-color;
+$success-color:     #43AC6A;
+$warning-color:     #f08a24;
+$linkcolor:         $warning-color;
+$otherlinkcolor:    $success-color;
                     </code>
                 </pre>
 
                 <aside class="notes">
-
+                    <p>
+                        The most straightforward way to use SassScript is to use variables. Variables begin with dollar signs, and are set like CSS properties
+                    </p>
+                    <p>
+                        Variables are only available within the level of nested selectors where they’re defined. If they’re defined outside of any nested selectors, they’re available everywhere. They can also be defined with the !global flag, in which case they’re also available everywhere.
+                    </p>
                 </aside>
 
             </section>
@@ -190,17 +193,27 @@ h2{
                     </code>
                 </pre>
                 <aside class="notes">
-                    Sass allows CSS rules to be nested within one another.
-                    The inner rule then only applies within the outer rule’s selector.
 
-                    CSS has quite a few properties that are in “namespaces;” for instance, font-family, font-size, and font-weight are all in the font namespace.
-                    In CSS, if you want to set a bunch of properties in the same namespace, you have to type it out each time.
-                    Sass provides a shortcut for this: just write the namespace once, then nest each of the sub-properties within it.
+                    <p>
+                        Sass allows CSS rules to be nested within one another.
+                    </p>
+                    <p>
+                        The inner rule then only applies within the outer rule’s selector.
+                    </p>
+                    <p>
+                        CSS has quite a few properties that are in “namespaces;” for instance, font-family, font-size, and font-weight are all in the font namespace.
+                    </p>
+                    <p>
+                        In CSS, if you want to set a bunch of properties in the same namespace, you have to type it out each time.
+                    </p>
+                    <p>
+                        Sass provides a shortcut for this: just write the namespace once, then nest each of the sub-properties within it.
+                    </p>
 
                 </aside>
             </section>
             <section>
-                <h2>Sass: Referencing parents</h2>
+                <h2>Sass: Referencing parent selectors</h2>
                 <pre>
                     <code data-trim class="css">
 a{
@@ -214,12 +227,14 @@ a{
                 </pre>
 
                 <aside class="notes">
-
+                    <p>
+                        Sometimes it’s useful to use a nested rule’s parent selector in other ways than the default. For instance, you might want to have special styles for when that selector is hovered over or for when the body element has a certain class. In these cases, you can explicitly specify where the parent selector should be inserted using the & character.
+                    </p>
                 </aside>
 
             </section>
             <section>
-                <h2>Sass: Functions & keyword arguments</h2>
+                <h2>Sass: Functions</h2>
                 <pre>
                     <code data-trim class="css">
 $p_color: $primary-color;
@@ -243,12 +258,15 @@ p{
                 </pre>
 
                 <aside class="notes">
-
-                    Sass functions can also be called using explicit keyword arguments.
-
-                    While this is less concise, it can make the stylesheet easier to read. It also allows functions to present more flexible interfaces, providing many arguments without becoming difficult to call.
-                    Named arguments can be passed in any order, and arguments with default values can be omitted. Since the named arguments are variable names, underscores and dashes can be used interchangeably.
-
+                    <p>
+                        Sass functions can also be called using explicit keyword arguments.
+                    </p>
+                    <p>
+                        While this is less concise, it can make the stylesheet easier to read. It also allows functions to present more flexible interfaces, providing many arguments without becoming difficult to call.
+                    </p>
+                    <p>
+                        Named arguments can be passed in any order, and arguments with default values can be omitted. Since the named arguments are variable names, underscores and dashes can be used interchangeably.
+                    </p>
                 </aside>
 
             </section>
@@ -266,9 +284,12 @@ p.#{$name} {
                 </pre>
 
                 <aside class="notes">
-                    You can also use SassScript variables in selectors and property names using #{} interpolation syntax:
-                    It’s also possible to use #{} to put SassScript into property values. In most cases this isn’t any better than using a variable,
-                    but using #{} does mean that any operations near it will be treated as plain CSS.
+                    <p>
+                        You can also use SassScript variables in selectors and property names using #{} interpolation syntax:
+                    </p>
+                    <p>
+                        It’s also possible to use #{} to put SassScript into property values. In most cases this isn’t any better than using a variable, but using #{} does mean that any operations near it will be treated as plain CSS.
+                    </p>
                 </aside>
 
             </section>
@@ -293,9 +314,12 @@ p {
                     </code>
                 </pre>
                 <aside class="notes">
-                    You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value.
-                    This means that if the variable has already been assigned to,
-                    it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.
+                    <p>
+                        You can assign to variables if they aren’t already assigned by adding the !default flag to the end of the value.
+                    </p>
+                    <p>
+                        This means that if the variable has already been assigned to,it won’t be re-assigned, but if it doesn’t have a value yet, it will be given one.
+                    </p>
                 </aside>
             </section>
         </section>
@@ -306,17 +330,57 @@ p {
                     <li>Importing & partials</li>
                     <li>Media queries</li>
                     <li>Extending / inheriting</li>
-                    <li>Mixins &amp; arguments</li>
                     <li>Control directives, logic &amp; expressions</li>
+                    <li>Mixins &amp; arguments</li>
                 </ul>
             </section>
             <section>
                 <h2>Sass: Importing &amp; partials</h2>
                 <pre>
                     <code data-trim class="css">
+@import "reset";
+@import "settings";
+@import "utils";
+@import "styles";
 
+@import "foo.css";
+@import "foo" screen;
+@import "http://foo.com/bar";
+@import url(foo);
                     </code>
                 </pre>
+                <aside class="notes">
+                    <p>
+                        Sass extends the CSS <code>@import</code> rule to allow it to import SCSS
+                        and Sass files. All imported SCSS and Sass files will be merged together
+                        into a single CSS output file. In addition, any variables or mixinsdefined in imported files can be used in the main
+                        file.
+                    </p>
+                    <p>
+                        Sass looks for other Sass files in the current directory, and the Sass
+                        file directory under Rack, Rails, or Merb. Additional search directories
+                        may be specified using the <code>:load_paths</code> option, or the
+                        <code>--load-path</code> option on the command line.
+                    </p>
+                    <p>
+                        <code>@import</code> takes a filename to import. By default, it looks
+                        for a Sass file to import directly, but there are a few circumstances under
+                        which it will compile to a CSS <code>@import</code> rule:
+                    </p>
+                    <ul>
+                        <li>If the file’s extension is <code>.css</code>.</li>
+                        <li>If the filename begins with <code>http://</code>.</li>
+                        <li>If the filename is a <code>url()</code>.</li>
+                        <li>If the <code>@import</code> has any media queries.</li>
+                    </ul>
+                    <p>
+                        If none of the above conditions are met and the extension is
+                        <code>.scss</code> or <code>.sass</code>, then the named Sass or SCSS file
+                        will be imported. If there is no extension, Sass will try to find a file
+                        with that name and the <code>.scss</code> or <code>.sass</code> extension
+                        and import it.
+                    </p>
+                </aside>
             </section>
             <section>
                 <h2>Sass: Media queries</h2>
@@ -325,6 +389,9 @@ p {
 
                     </code>
                 </pre>
+                <aside class="notes">
+
+                </aside>
             </section>
             <section>
                 <h2>Sass: Extending / inheriting</h2>
@@ -333,20 +400,45 @@ p {
 
                     </code>
                 </pre>
+                <aside class="notes">
+
+                </aside>
             </section>
             <section>
-                <h2>Sass: Mixins &amp; arguments</h2>
+                <h2>Sass: Control directives, logic &amp; expressions (0)</h2>
+                <ul>
+                    <li>@if</li>
+                    <li>@for</li>
+                    <li>@each</li>
+                    <li>@while</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Sass: Control directives, logic &amp; expressions (1)</h2>
                 <pre>
                     <code data-trim class="css">
 
                     </code>
                 </pre>
             </section>
+
             <section>
-                <h2>Sass: Control directives, logic &amp; expressions</h2>
+                <h2>Sass: Mixins &amp; arguments</h2>
                 <pre>
                     <code data-trim class="css">
+@mixin border($size: 1px, $color: transparant,
+$left: false, $bottom: false, $right:false, $top: false){
+    @if ($left)   { border-left: $size solid $color;   }
+    @if ($right)  { border-right: $size solid $color;  }
+    @if ($top)    { border-top: $size solid $color;    }
+    @if ($bottom) { border-bottom: $size solid $color; }
+}
 
+@mixin box-sizing($type:border-box) {
+    -webkit-box-sizing: $type;  // Android < 2.3, iOS < 4
+    -moz-box-sizing: $type;     // Firefox < 29
+    box-sizing: $type;          // Chrome, IE 8+, Opera, Safari 5.1
+}
                     </code>
                 </pre>
             </section>
