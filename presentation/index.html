@@ -77,8 +77,8 @@
                     <li>Browser incompatibilities</li>
                     <li>No functions / logic</li>
                     <li>No variables</li>
-                    <li>Uncostumizable frameworks</li>
-                    <li> DRY ..</li>
+                    <li>Uncustomizable frameworks</li>
+                    <li>DRY ..</li>
                 </ul>
             </section>
         </section>
@@ -470,7 +470,7 @@ $left: false, $bottom: false, $right:false, $top: false){
                     <li>Dynamic style sheet language</li>
                     <li>Compiles to CSS (client or server)</li>
                     <li>Introduces programming features to css (calculations)</li>
-                    <li>Looks and feels like CSS (all CSS IS valid LESS</li>
+                    <li>Looks and feels like CSS (all CSS is valid LESS)</li>
                 </ul>
             </section>
         </section>
@@ -479,20 +479,23 @@ $left: false, $bottom: false, $right:false, $top: false){
                 <h2>Using LESS on the Client</h2>
                 <pre>
                     <code data-trim class="html">
-<head>
-    <link rel="stylesheet/less"
-          type="text/css"
-          href="css/my.less">
-
-    <script src="js/less.js"
-            type="text/javascript"></script>
-</head>
+&lt;html&gt;
+&lt;head&gt;
+  <link rel="stylesheet/less"
+        type="text/css"
+        href="css/my.less">
+  <script src="js/less.js"
+          type="text/javascript"></script>
+&lt;/head&gt;
+&lt;/html&gt;
                     </code>
                 </pre>
                 <aside class="notes">
-                    - add type to the stylesheet (/less)
-                    - javascript transforms the LESS file into CSS directly on the client
-                    - include javascript after your LESS files
+                <ul>
+                    <li>add type to the stylesheet (/less)</li>
+                    <li>javascript transforms the LESS file into CSS directly on the client</li>
+                    <li>include javascript after your LESS files</li>
+                </ul>
                 </aside>
             </section>
             <section>
@@ -517,6 +520,13 @@ $left: false, $bottom: false, $right:false, $top: false){
                     <code data-trim class="bash">$ npm install less</code>
                 </pre>
                 <pre>
+                    <code data-trim class="bash">
+$ lessc styles.less
+
+$ lessc styles.less > styles.css
+                    </code>
+                </pre>
+                <pre>
                     <code data-trim class="js">
 var less = require('less');
 
@@ -535,7 +545,7 @@ less.render(lessContents,
                     <li>All CSS is valid... really</li>
                     <li>Renaming your .css to .less works</li>
                     <li>LESS adds to CSS</li>
-                    <li>mix LESS and CSS is no problem only LESS gets compiled to CSS</li>
+                    <li>Mix of LESS and CSS is no problem, only LESS gets compiled to CSS</li>
                 </ul>
             </section>
             <section>
@@ -563,13 +573,17 @@ less.render(lessContents,
                     <li>Embeds other .less files in a file</li>
                     <li>Allows for simple modularization</li>
                     <li>While maintaining merging of CSS</li>
-                    <li>If Import is .css, it preserves the @import statement</li>
-                    <li>If Import is .less, it merges it into file</li>
+                    <li>If import is .css, it preserves the @import statement</li>
+                    <li>If import is .less, it merges it into file</li>
                 </ul>
-                <pre>
-init.less
+                <pre>init.less
                     <code data-trim class="css">@import "init";</code>
                 </pre>
+                <aside class="notes">
+                <ul>
+                    <li>modularization: colors, borders, fonts, ...</li>
+                </ul>
+                </aside>
             </section>
             <section>
                 <h2>Variables</h2>
@@ -588,10 +602,12 @@ init.less
                     </code>
                 </pre>
                 <aside class="notes">
-                    - variables start with an @
-                    - name of the variable starts with a letter
-                    - case sensitivity matter, hyphens, underscores, numbers
-                    - variables are constants, no reassign
+                <ul>
+                    <li>variables start with an @</li>
+                    <li>name of the variable starts with a letter</li>
+                    <li>case sensitivity matter, hyphens, underscores, numbers</li>
+                    <li>variables are constants, no reassign</li>
+                </ul>
                 </aside>
             </section>
             <section>
@@ -670,9 +686,124 @@ color: mix(@color, #246);
 }
                     </code>
                 </pre>
-                <aside>
-                    compiled CSS => take the body of the mixin and inject it into the css class where used
+                <aside class="notes">
+                    <p>compiled CSS => take the body of the mixin and inject it into the css class where used</p>
                 </aside>
+            </section>
+            <section>
+                <h2>Mixins - defaults</h2>
+                <pre>
+                    <code data-trim class="css">
+// Default Values
+.rounded-corners-all(@size: 5px)
+{
+  border-radius: @size;
+  -webkit-border-radius: @size;
+  -moz-border-radius: @size;
+}
+
+#form
+{
+  .rounded-corners-all;
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Mixins - overloads</h2>
+                <pre>
+                    <code data-trim class="css">
+// Using overloads
+.color(@color)
+{
+  color: @color;
+}
+
+.color(@color, @factor)
+{
+  color: lighten(@color, @factor);
+}
+
+#form
+{
+  .color(#888, 20%); // Uses 2nd overload
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Mixins - guards</h2>
+                <pre>
+                    <code data-trim class="css">
+// Using guards
+.color(@color) when (alpha(@color) >= 50%)
+{
+  color: Black;
+}
+
+.color(@color) when (alpha(@color) < 50%)
+{
+  color: transparent;
+}
+
+#form
+{
+  .color(@mainColor); // Uses 1st overload
+}
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Nested Rules</h2>
+                <ul>
+                    <li>Allows you to structure rules in a logical way</li>
+                    <li>Hierarchies imply the cascading/specificity</li>
+                    <li>LESS then deconstructs it into CSS for you</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Nested Rules</h2>
+                <pre>
+                    <code data-trim class="css">
+// LESS Nested Rules
+nav {
+  font-size: 14px;
+  font-weight: bold;
+  float: right;
+  ul {
+    // Makes “nav ul {...}”
+    list-style-type: none;
+    li {
+      // Makes “nav ul li {...}”
+      float: left;
+      margin: 2px;
+    }
+  }
+}
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Nested Rules</h2>
+                <pre>
+                    <code data-trim class="css">
+// Use Combinator (&) to mix with parent:
+a
+{
+  text-decoration: none;
+  &:hover
+  {
+    text-decoration: underline;
+  }
+}
+
+// Results in
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+                    </code>
+                </pre>
             </section>
         </section>
         <section>
@@ -681,6 +812,7 @@ color: mix(@color, #246);
                 <li><a href="http://sass-lang.com/">Sass Lang website</a></li>
                 <li><a href="http://sass-compatibility.github.io/">Sass Compatibility</a></li>
                 <li><a href="http://foundation.zurb.com/">Zurb Foundation</a></li>
+                <li><a href="http://lesscss.org/">Official LESS website</a></li>
                 <li><a href="https://css-tricks.com/sass-vs-less/">Sass vs LESS</a></li>
             </ul>
         </section>
