@@ -191,6 +191,11 @@ button, input[type=button] {
 COLORS:
 -------
 */
+/* 0 - 480px */
+/* 480px - 768px */
+/* 768px - 960px */
+/* 960px - 1440px */
+/* 1440px - .. */
 .wrapper {
   margin: 20px; }
 
@@ -218,6 +223,12 @@ EXAMPLES
   */
   /*
   VARIABLE DEFAULTS
+  */
+  /*
+  EXTENDING / INHERITING
+  */
+  /*
+  MEDIA QUERIES
   */
   /*
   CONTROL DIRECTIVES, LOGIC & EXPRESSIONS
@@ -263,6 +274,48 @@ EXAMPLES
       content: "First content"; }
     #examples p.secundary:before {
       content: "First bis content"; }
+  #examples .buttonanimation, #examples button {
+    -o-transition: color .3s linear, background .4s linear;
+    -ms-transition: color .3s linear, background .4s linear;
+    -moz-transition: color .3s linear, background .4s linear;
+    -webkit-transition: color .3s linear, background .4s linear;
+    transition: color .3s linear, background .4s linear; }
+  #examples button {
+    color: #fff;
+    background: #198fe6;
+    border: 1px solid #fff;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-size: 15px; }
+    #examples button:hover, #examples button:focus, #examples button:active {
+      background: #fff;
+      border: 1px solid #198fe6;
+      color: #198fe6; }
+  #examples .vierkant {
+    height: 150px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold; }
+    @media only screen and (max-width: 30em) {
+      #examples .vierkant {
+        background: blue; }
+        #examples .vierkant span:before {
+          content: "small"; } }
+    @media only screen and (min-width:30.064em) and (max-width:48em) {
+      #examples .vierkant {
+        background: pink; }
+        #examples .vierkant span:before {
+          content: "medium"; } }
+    @media only screen and (min-width:48em) {
+      #examples .vierkant {
+        background: green; }
+        #examples .vierkant span:before {
+          content: "large"; } }
+    @media only screen and (min-width:60em) {
+      #examples .vierkant {
+        color: red; }
+        #examples .vierkant span:before {
+          content: "xlarge"; } }
   #examples .boxbasics, #examples .box-info, #examples .box-success, #examples .box-error, #examples .box-warning {
     padding: 10px 10px 10px 32px;
     margin-bottom: 15px;
@@ -302,3 +355,12 @@ EXAMPLES
     background-color: #fad7b3;
     border-top: 2px solid #d3700e;
     border-bottom: 2px solid #d3700e; }
+  #examples .trianglewrapper {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 25px;
+    border-color: transparent transparent transparent pink;
+    border-left-style: solid;
+  }

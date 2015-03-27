@@ -67,3 +67,16 @@
     font-size:1.2em;
 }
 
+#ordina #sasslogo{
+    width:200px;
+    display:block;
+    margin:50px auto;
+}
+#ordina #sassglasses{
+    margin-top:250px;
+    width:250px;
+}
+
+#ordina pre code{
+    max-height: none;
+}

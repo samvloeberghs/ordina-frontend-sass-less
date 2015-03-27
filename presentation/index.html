@@ -87,7 +87,7 @@
             <div class="emphasize">
 
                 <h3>SASS ; CSS with superpowers</h3>
-                <img src="http://sass-lang.com/assets/img/illustrations/glasses-2087d741.svg" alt="Sass"/>
+                <img src="img/logo-sass.svg" alt="Sass" id="sasslogo" />
                 <p>
                     Sass is the most mature, stable, and powerful professional grade CSS extension language
                     in the world.
@@ -326,8 +326,8 @@ p {
                     <li>Importing & partials</li>
                     <li>Media queries</li>
                     <li>Extending / inheriting</li>
-                    <li>Control directives, logic &amp; expressions</li>
                     <li>Mixins &amp; arguments</li>
+                    <li>Control directives, logic &amp; expressions</li>
                 </ul>
             </section>
             <section>
@@ -382,7 +382,27 @@ p {
                 <h2>Sass: Media queries</h2>
                 <pre>
                     <code data-trim class="css">
-
+.vierkant{
+    height:150px; text-align:center;
+    color:#fff;   font-weight:bold;
+    span{ display:none; }
+    @media #{$small-only} {
+        background: blue;
+        span.small{ display:inline; }
+    }
+    @media #{$medium-only} {
+        background:pink;
+        span.medium{ display:inline; }
+    }
+    @media #{$large-up} {
+        background:green;
+        span.large{ display:inline; }
+    }
+    @media #{$xlarge-up} {
+        color:red;
+        span.xlarge{ display:inline }
+    }
+}
                     </code>
                 </pre>
                 <aside class="notes">
@@ -393,7 +413,30 @@ p {
                 <h2>Sass: Extending / inheriting</h2>
                 <pre>
                     <code data-trim class="css">
+.buttonanimation{
+    -o-transition:color .3s linear, background .4s linear;
+    -ms-transition:color .3s linear, background .4s linear;
+    -moz-transition:color .3s linear, background .4s linear;
+    -webkit-transition:color .3s linear, background .4s linear;
+    transition:color .3s linear, background .4s linear;
+}
 
+button{
+    color:#fff;
+    background:#198fe6;
+    border:1px solid #fff;
+    padding:5px 20px;
+    text-transform:uppercase;
+    font-size:15px;
+    @extend .buttonanimation;
+    &:hover,
+    &:focus,
+    &:active{
+        background:#fff;
+        border:1px solid #198fe6;
+        color:#198fe6;
+    }
+}
                     </code>
                 </pre>
                 <aside class="notes">
@@ -413,11 +456,31 @@ p {
                 <h2>Sass: Control directives, logic &amp; expressions (1)</h2>
                 <pre>
                     <code data-trim class="css">
+@each $type, $color in
+    (info, $info-color),
+    (success,$success-color),
+    (error, $error-color),
+    (warning, $warning-color) {
 
+    .box-#{$type} {
+        @extend .boxbasics;
+        // COULD BE AVOIDED: MORE CODE GENERATION
+        $bordercolor: darken($color, 10%);
+        @if($type == 'info') {
+            $bgcolor: $color;
+        }
+        @else{
+            $bgcolor: lighten($color, 30%);
+        }
+        color: $bordercolor;
+        @include background($imgpath: "../images/icons/#{$type}.png", $color: $bgcolor, $position: 8px 50%);
+        @include border($size:2px, $color: $bordercolor, $bottom:true, $top:true);
+    }
+
+}
                     </code>
                 </pre>
             </section>
-
             <section>
                 <h2>Sass: Mixins &amp; arguments</h2>
                 <pre>
