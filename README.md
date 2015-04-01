@@ -38,7 +38,7 @@ publish it in to distributable
 
     grunt publish
 
-### presentation
+### Presentation
 
 contains the Reveal.js presentation
 
@@ -49,4 +49,6 @@ run the presentation using
 
     grunt serve
 
+contains the PDF version of the presentation
 
+    sass-vs-less.pdf
