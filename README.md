@@ -16,14 +16,14 @@ in a commandline:
 
 ## Contents
 
-### LESS
+### LESS folder
 
 contains the code of the LESS example(s)
 
     npm install
     bower install
 
-### Sass
+### Sass folder
 
 contains the code of the Sass example(s)
 
@@ -38,7 +38,7 @@ publish it in to distributable
 
     grunt publish
 
-### Presentation
+### presentation folder
 
 contains the Reveal.js presentation
 
